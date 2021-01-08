@@ -57,6 +57,8 @@ public class CategoryEntity {
 
 ### 定义接口实现类
 
+实现类需要继承BaseApiService 和 实现的接口
+
 实例一个实体对象
 
 将传过来的 pid 对它赋值

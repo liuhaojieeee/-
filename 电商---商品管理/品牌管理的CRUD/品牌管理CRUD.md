@@ -404,7 +404,7 @@ Result<JSONObject> deleteBrandCategoryById(Integer id);
 
 ### 2.接口实现类
 
-```
+```java
 @Override
 public Result<JSONObject> deleteBrandCategoryById(Integer id) {
 
