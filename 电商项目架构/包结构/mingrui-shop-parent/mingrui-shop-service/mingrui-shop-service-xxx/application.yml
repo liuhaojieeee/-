@@ -1,0 +1,47 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: xxx-server
+# 配置数据源
+  datasource:
+    # 数据源名称，任意
+    name: mysql
+    url: jdbc:mysql://localhost:3306/2005?useSSL=true&nullNamePatternMatchesAll=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    # 数据库连接用户
+    username: root
+    # 数据库连接密码
+    password: root
+    # 驱动名称
+    driver-class-name: com.mysql.jdbc.Driver
+    # boot2.0+使用hikari作为默认数据库连接池
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # 是否自动提交事务 默认
+      auto-commit: true
+      # 允许的最小连接数
+      minimum-idle: 5
+      # 连接池内最大连接数
+      maximum-pool-size: 10
+      # 验证连接的sql语句
+      connection-test-query: SELECT 1 FROM DUAL
+      # 连接超时时间 默认30000 毫秒 如果小于250毫秒，则被重置回30秒
+      connection-timeout: 30000
+      # 验证超时时间默认5000毫秒 如果小于250毫秒，则会被重置回5秒
+      validation-timeout: 5000
+      # 设置连接在连接池中的存货时间 如果不等于0且小于30秒则会被重置回30分钟
+      max-lifetime: 1800000
+# 通用mapper 指定MYSQL数据库
+mapper:
+  mappers: tk.mybatis.mapper.common.Mapper
+  identity: MYSQL
+#日志设置
+logging:
+  level:
+    # 打印与我们程序相关的日志信息
+    com.baidu.shop: debug
+# eureka配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

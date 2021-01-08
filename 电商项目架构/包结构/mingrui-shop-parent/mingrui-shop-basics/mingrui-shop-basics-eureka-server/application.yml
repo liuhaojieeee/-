@@ -1,0 +1,25 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    # eureka服务url,值为map集合默认key为defaultZone
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+    # 当前服务是否同时注册
+    register-with-eureka: false
+    # 去注册中心获取其他服务的地址
+    fetch-registry: false
+  instance:
+    hostname: localhost
+    # 定义服务续约任务（心跳）的调用间隔，单位：秒 默认30
+    lease-renewal-interval-in-seconds: 1
+    # 定义服务失效的时间，单位：秒 默认90
+    lease-expiration-duration-in-seconds: 2
+  server:
+  # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    enable-self-preservation: false
