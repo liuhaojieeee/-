@@ -81,6 +81,27 @@ public class BaseDTO {
 
 在mingrui-shop-service-xxx中写实现类
 
+需要加工具类
+
+public class BaiduBeanUtil<T> {
+
+    public static <T> T copyProperties(Object source,Class<T> clazz){
+    
+        try {
+            T t = clazz.newInstance();//创建当前类型的实例
+            BeanUtils.copyProperties(source,t);
+            return t;
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    
+        return null;
+    }
+
+}
+
 ```java
 @Override
 public Result<PageInfo<BrandEntity>> getBrandList(BrandDTO brandDTO) {
